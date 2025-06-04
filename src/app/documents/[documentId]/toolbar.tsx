@@ -18,6 +18,8 @@ import {
 import FontFamilyButton from "./components/font-family-button";
 import HeadingLevelButton from "./components/heading-level-button";
 import HighlightColorButton from "./components/highlight-color-button";
+import ImageButton from "./components/image-button";
+import LinkButton from "./components/link-button";
 import TextColorButton from "./components/text-color-button";
 
 interface ToolbarButtonProps {
@@ -155,8 +157,8 @@ export const Toolbar = () => {
         orientation="vertical"
         className="h-6 min-h-6 bg-neutral-300"
       />
-      {/* TODO: Link */}
-      {/* TODO: Image */}
+      <LinkButton />
+      <ImageButton />
       {/* TODO: Align */}
       {/* TODO: Line height */}
       {/* TODO: List */}
