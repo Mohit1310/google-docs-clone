@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { useEditorStore } from "@/store/use-editor-store";
 import { ImageIcon, SearchIcon, UploadIcon } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const ImageButton = () => {
   const { editor } = useEditorStore();
@@ -33,8 +34,19 @@ const ImageButton = () => {
     input.onchange = (e) => {
       const file = (e.target as HTMLInputElement).files?.[0];
       if (file) {
+        // Validate file type and size
+        if (!file.type.startsWith("image/")) {
+          toast.error("Please select a valid image file");
+          return;
+        }
+        if (file.size > 5 * 1024 * 1024) {
+          // 5MB limit
+          toast.error("File size too large. Please select an image under 5MB");
+          return;
+        }
         const imageUrl = URL.createObjectURL(file);
         onChange(imageUrl);
+        setTimeout(() => URL.revokeObjectURL(imageUrl), 1000);
       }
     };
     input.click();

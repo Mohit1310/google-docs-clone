@@ -27,7 +27,7 @@ const LinkButton = () => {
     <DropdownMenu
       onOpenChange={(open) => {
         if (open) {
-          setValue(editor?.getAttributes("link").href);
+          setValue(editor?.getAttributes("link").href || "");
         }
       }}
     >
