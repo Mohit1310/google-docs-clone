@@ -15,6 +15,8 @@ import {
   UnderlineIcon,
   Undo2Icon,
 } from "lucide-react";
+import FontFamilyButton from "./components/font-family-button";
+import HeadingLevelButton from "./components/heading-level-button";
 
 interface ToolbarButtonProps {
   onClick?: () => void;
@@ -127,12 +129,12 @@ export const Toolbar = () => {
         orientation="vertical"
         className="h-6 min-h-6 bg-neutral-300"
       />
-      {/* TODO: Font family */}
+      <FontFamilyButton />
       <Separator
         orientation="vertical"
         className="h-6 min-h-6 bg-neutral-300"
       />
-      {/* TODO: Heading */}
+      <HeadingLevelButton />
       <Separator
         orientation="vertical"
         className="h-6 min-h-6 bg-neutral-300"
