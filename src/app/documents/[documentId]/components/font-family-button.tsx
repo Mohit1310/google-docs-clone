@@ -7,30 +7,16 @@ import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
 import { ChevronDownIcon } from "lucide-react";
 
+const FONT_OPTIONS = [
+  { label: "Arial", value: "Arial" },
+  { label: "Times New Roman", value: "Times New Roman" },
+  { label: "Courier New", value: "Courier New" },
+  { label: "Georgia", value: "Georgia" },
+  { label: "Verdana", value: "Verdana" },
+];
+
 const FontFamilyButton = () => {
   const { editor } = useEditorStore();
-  const fonts = [
-    {
-      label: "Arial",
-      value: "Arial",
-    },
-    {
-      label: "Times New Roman",
-      value: "Times New Roman",
-    },
-    {
-      label: "Courier New",
-      value: "Courier New",
-    },
-    {
-      label: "Georgia",
-      value: "Georgia",
-    },
-    {
-      label: "Verdana",
-      value: "Verdana",
-    },
-  ];
 
   return (
     <DropdownMenu>
@@ -46,10 +32,12 @@ const FontFamilyButton = () => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="flex flex-col gap-y-1 p-1">
-        {fonts.map(({ label, value }) => (
+        {FONT_OPTIONS.map(({ label, value }) => (
           <button
             key={value}
             type="button"
+            role="menuitem"
+            aria-label={`Set font family to ${label}`}
             className={cn(
               "flex items-center gap-x-2 rounded-sm px-2 py-1 hover:bg-neutral-200/80",
               editor?.getAttributes("textStyle").fontFamily === value &&

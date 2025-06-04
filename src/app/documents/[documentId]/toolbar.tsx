@@ -17,6 +17,8 @@ import {
 } from "lucide-react";
 import FontFamilyButton from "./components/font-family-button";
 import HeadingLevelButton from "./components/heading-level-button";
+import HighlightColorButton from "./components/highlight-color-button";
+import TextColorButton from "./components/text-color-button";
 
 interface ToolbarButtonProps {
   onClick?: () => void;
@@ -147,8 +149,8 @@ export const Toolbar = () => {
       {sections[1].map((item) => (
         <ToolbarButton key={item.label} {...item} />
       ))}
-      {/* TODO: Text color */}
-      {/* TODO: highlight color */}
+      <TextColorButton />
+      <HighlightColorButton />
       <Separator
         orientation="vertical"
         className="h-6 min-h-6 bg-neutral-300"

@@ -45,9 +45,9 @@ const HeadingLevelButton = () => {
             type="button"
             className={cn(
               "flex min-w-7 items-center rounded-sm px-2 py-1 hover:bg-neutral-200/80",
-              (value === 0 && !editor?.isActive("heading")) ||
-                (editor?.isActive("heading", { level: value }) &&
-                  "bg-neutral-200/80"),
+              ((value === 0 && !editor?.isActive("heading")) ||
+                (value > 0 && editor?.isActive("heading", { level: value }))) &&
+                "bg-neutral-200/80",
             )}
             style={{ fontSize }}
             onClick={() => {
