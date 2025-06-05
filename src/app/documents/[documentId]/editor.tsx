@@ -1,4 +1,5 @@
 "use client";
+// import { FontSizeExtension } from "@/extensions/font-size";
 import { useEditorStore } from "@/store/use-editor-store";
 import { Color } from "@tiptap/extension-color";
 import FontFamily from "@tiptap/extension-font-family";
@@ -11,6 +12,7 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
+import TextAlign from "@tiptap/extension-text-align";
 import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
@@ -78,6 +80,10 @@ export const Editor = () => {
         autolink: true,
         defaultProtocol: "https",
       }),
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
+      // FontSizeExtension
     ],
     content: `<table>
           <tbody>

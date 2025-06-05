@@ -15,11 +15,14 @@ import {
   UnderlineIcon,
   Undo2Icon,
 } from "lucide-react";
+import AlignButton from "./components/align-button";
 import FontFamilyButton from "./components/font-family-button";
+// import FontSizeButton from "./components/font-size-button";
 import HeadingLevelButton from "./components/heading-level-button";
 import HighlightColorButton from "./components/highlight-color-button";
 import ImageButton from "./components/image-button";
 import LinkButton from "./components/link-button";
+import ListButton from "./components/list-button";
 import TextColorButton from "./components/text-color-button";
 
 interface ToolbarButtonProps {
@@ -144,6 +147,7 @@ export const Toolbar = () => {
         className="h-6 min-h-6 bg-neutral-300"
       />
       {/* TODO: Font size */}
+      {/* <FontSizeButton /> */}
       <Separator
         orientation="vertical"
         className="h-6 min-h-6 bg-neutral-300"
@@ -159,9 +163,10 @@ export const Toolbar = () => {
       />
       <LinkButton />
       <ImageButton />
-      {/* TODO: Align */}
+      <AlignButton />
       {/* TODO: Line height */}
       {/* TODO: List */}
+      <ListButton />
       {sections[2].map((item) => (
         <ToolbarButton key={item.label} {...item} />
       ))}
