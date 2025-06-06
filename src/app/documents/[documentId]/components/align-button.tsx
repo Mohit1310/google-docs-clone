@@ -37,6 +37,11 @@ const AlignButton = () => {
       icon: AlignJustifyIcon,
     },
   ];
+  const currentAlignment =
+    alignments.find((alignment) =>
+      editor?.isActive({ textAlign: alignment.value }),
+    ) || alignments[0];
+  const CurrentIcon = currentAlignment.icon;
 
   return (
     <DropdownMenu>
@@ -44,8 +49,9 @@ const AlignButton = () => {
         <button
           className="flex h-7 min-w-7 shrink-0 flex-col items-center justify-center overflow-hidden rounded-sm px-1.5 text-sm hover:bg-neutral-200/80"
           type="button"
+          aria-label={`Current alignment: ${currentAlignment.label}`}
         >
-          <AlignLeftIcon className="size-4" />
+          <CurrentIcon className="size-4" />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="flex flex-col gap-y-1 p-1">

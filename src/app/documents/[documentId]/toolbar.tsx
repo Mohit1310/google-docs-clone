@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import AlignButton from "./components/align-button";
 import FontFamilyButton from "./components/font-family-button";
-// import FontSizeButton from "./components/font-size-button";
+import FontSizeButton from "./components/font-size-button";
 import HeadingLevelButton from "./components/heading-level-button";
 import HighlightColorButton from "./components/highlight-color-button";
 import ImageButton from "./components/image-button";
@@ -146,8 +146,7 @@ export const Toolbar = () => {
         orientation="vertical"
         className="h-6 min-h-6 bg-neutral-300"
       />
-      {/* TODO: Font size */}
-      {/* <FontSizeButton /> */}
+      <FontSizeButton />
       <Separator
         orientation="vertical"
         className="h-6 min-h-6 bg-neutral-300"
