@@ -21,6 +21,7 @@ import FontSizeButton from "./components/font-size-button";
 import HeadingLevelButton from "./components/heading-level-button";
 import HighlightColorButton from "./components/highlight-color-button";
 import ImageButton from "./components/image-button";
+import LineHeightButton from "./components/line-height-button";
 import LinkButton from "./components/link-button";
 import ListButton from "./components/list-button";
 import TextColorButton from "./components/text-color-button";
@@ -163,8 +164,7 @@ export const Toolbar = () => {
       <LinkButton />
       <ImageButton />
       <AlignButton />
-      {/* TODO: Line height */}
-      {/* TODO: List */}
+      <LineHeightButton />
       <ListButton />
       {sections[2].map((item) => (
         <ToolbarButton key={item.label} {...item} />

@@ -2,26 +2,28 @@ import { Input } from "@/components/ui/input";
 import { useEditorStore } from "@/store/use-editor-store";
 import { MinusIcon, PlusIcon } from "lucide-react";
 import type React from "react";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const FontSizeButton = () => {
   const { editor } = useEditorStore();
 
-  console.log("attributes", editor?.getAttributes("textStyle"));
+  // biome-ignore lint: unecessary lint error
+  const currentFontSize = useMemo(() => {
+    const attrs = editor?.getAttributes("textStyle");
+    return attrs?.fontSize ? attrs.fontSize.replace("px", "") : "16";
+  }, [editor?.getAttributes("textStyle")]);
 
-  const currentFontSize = editor?.getAttributes("textStyle").fontSize
-    ? editor?.getAttributes("textStyle").fontSize.replace("px", "")
-    : "16";
-
-  const [fontSize, setFontSize] = useState(currentFontSize);
-  const [inputValue, setInputValue] = useState(fontSize);
+  const [inputValue, setInputValue] = useState(currentFontSize);
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    setInputValue(currentFontSize);
+  }, [currentFontSize]);
 
   const updateFontSize = (newSize: string) => {
     const size = Number.parseInt(newSize);
     if (!Number.isNaN(size) && size > 0) {
       editor?.chain().focus().setFontSize(`${size}px`).run();
-      setFontSize(newSize);
       setInputValue(newSize);
       setIsEditing(false);
     }
@@ -44,12 +46,12 @@ const FontSizeButton = () => {
   };
 
   const increment = () => {
-    const newSize = Number.parseInt(fontSize) + 1;
+    const newSize = Number.parseInt(currentFontSize) + 1;
     updateFontSize(newSize.toString());
   };
 
   const decrement = () => {
-    const newSize = Number.parseInt(fontSize) - 1;
+    const newSize = Number.parseInt(currentFontSize) - 1;
     if (newSize > 0) {
       updateFontSize(newSize.toString());
     }
@@ -79,7 +81,6 @@ const FontSizeButton = () => {
           type="button"
           onClick={() => {
             setIsEditing(true);
-            setFontSize(currentFontSize);
           }}
         >
           {currentFontSize}
